@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>GET Producto</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { padding: 5px; margin: 5px; }
+    pre { background: #f4f4f4; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Consultar Producto</h2>
+  <form method="get" action="metodoget.php" target="resultado">
+    <input type="number" name="id" placeholder="ID">
+    <button type="submit">Consultar</button>
+  </form>
+
+  <h3>Resultado:</h3>
+  <iframe name="resultado" style="width:100%; height:200px; border:1px solid #ccc;"></iframe>
+</body>
+</html>
+

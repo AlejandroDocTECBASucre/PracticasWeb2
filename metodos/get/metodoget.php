@@ -6,9 +6,9 @@ $products = [
 
 header('Content-Type: application/json');
 
-if (isset($_GET['id'])) {
+
     $id = $_GET['id'];
-    echo json_encode($products[$id] ?? ["error" => "Producto no encontrado"]);
-} else {
+    echo json_encode($products[$id] );
+
     echo json_encode($products);
-}
+

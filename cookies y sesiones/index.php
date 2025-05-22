@@ -1,17 +1,11 @@
 <?php
-
 if (isset($_COOKIE['contador'])) {
-   
     $contador = $_COOKIE['contador'] + 1;
-} else {
-    
+} else { 
     $contador = 1;
 }
-
-
 setcookie('contador', $contador, time() + (30 * 24 * 60 * 60));
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

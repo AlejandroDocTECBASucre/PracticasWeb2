@@ -1,5 +1,6 @@
 <?php 
-$link=new mysqli("localhost","root","","pruebadb");
+$link = new mysqli("localhost", "root", "", "pruebadb");
+
 $result = mysqli_query($link, "SELECT * FROM usuarios");
 
 if (!$result) {
@@ -24,6 +25,9 @@ if (!$result) {
         th {
             background-color: #eee;
         }
+        .fila-impar {
+            background-color:rgb(88, 8, 15);
+        }
     </style>
 </head>
 <body>
@@ -41,8 +45,10 @@ if (!$result) {
         </tr>
     </thead>
     <tbody>
-        <?php while ($fila = mysqli_fetch_assoc($result)) { ?>
-        <tr>
+        <?php while ($fila = mysqli_fetch_assoc($result)) { 
+            $clase = ($fila['id'] % 2 != 0) ? 'fila-impar' : '';
+        ?>
+        <tr class="<?php echo $clase; ?>">
             <td><?php echo $fila['id']; ?></td>
             <td><?php echo $fila['nombre']; ?></td>
             <td><?php echo $fila['apellido']; ?></td>
@@ -59,4 +65,3 @@ if (!$result) {
 <?php
 mysqli_close($link);
 ?>
-

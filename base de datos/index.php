@@ -1,16 +1,12 @@
-<?php 
-$link = new mysqli("localhost", "root", "", "pruebadb");
-
-$result = mysqli_query($link, "SELECT * FROM usuarios");
-
-if (!$result) {
-    die("Consulta inválida: " . mysqli_error($link));
-}
+<?php
+require 'db.php';
+$result = $link->query("SELECT * FROM usuarios");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Listado de Usuarios</title>
+    <title>Gestión de Usuarios</title>
     <style>
         table {
             border-collapse: collapse;
@@ -26,13 +22,17 @@ if (!$result) {
             background-color: #eee;
         }
         .fila-impar {
-            background-color:rgb(88, 8, 15);
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
 
 <h2 style="text-align:center;">Lista de Usuarios</h2>
+
+<div style="text-align:center; margin-bottom: 20px;">
+    <a href="formulario.php">Agregar nuevo usuario</a>
+</div>
 
 <table>
     <thead>
@@ -42,10 +42,11 @@ if (!$result) {
             <th>Apellido</th>
             <th>Teléfono</th>
             <th>Carnet</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        <?php while ($fila = mysqli_fetch_assoc($result)) { 
+        <?php while ($fila = $result->fetch_assoc()): 
             $clase = ($fila['id'] % 2 != 0) ? 'fila-impar' : '';
         ?>
         <tr class="<?php echo $clase; ?>">
@@ -54,14 +55,14 @@ if (!$result) {
             <td><?php echo $fila['apellido']; ?></td>
             <td><?php echo $fila['telefono']; ?></td>
             <td><?php echo $fila['carnet']; ?></td>
+            <td>
+                <a href="formulario.php?editar=<?php echo $fila['id']; ?>">Editar</a> |
+                <a href="procesar.php?eliminar=<?php echo $fila['id']; ?>" onclick="return confirm('¿Eliminar este usuario?');">Eliminar</a>
+            </td>
         </tr>
-        <?php } ?>
+        <?php endwhile; ?>
     </tbody>
 </table>
 
 </body>
 </html>
-
-<?php
-mysqli_close($link);
-?>

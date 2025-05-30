@@ -1,6 +1,6 @@
 <?php 
 $link=new mysqli("localhost","root","","pruebadb");
 
-if(!$link -> connect_error)
-die("conexion exitosa".$link->connect_error);
+if($link -> connect_error)
+die("conexion Fallida".$link->connect_error);
 ?>

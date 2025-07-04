@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>ej en clase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>ej en clase</h1>
+
+
+  <section>
+    <h2>1. Contar caracteres en un input</h2>
+    <input type="text" id="texto" placeholder="Escribe algo" oninput="contarCaracteres()" />
+    <p id="contador">Caracteres: 0</p>
+  </section>
+
+  <section>
+    <h2>2. Mostrar numeros pares de 1 a N</h2>
+    <input type="number" id="numero" placeholder="Ingresa un número" />
+    <button onclick="mostrarPares()">Mostrar Pares</button>
+    <p id="resultado"></p>
+  </section>
+
+  
+  <section>
+    <h2>3.(opcional) Cambiar color de texto segun eleccion</h2>
+    <select id="colores" onchange="cambiarColor()">
+      <option value="black">Negro</option>
+      <option value="red">Rojo</option>
+      <option value="green">Verde</option>
+      <option value="blue">Azul</option>
+      <option value="orange">Naranja</option>
+    </select>
+    <p id="texto-cambiar">Este texto cambia de color.</p>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

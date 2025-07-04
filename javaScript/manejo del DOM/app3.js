@@ -1,7 +1,6 @@
 const listaToppings = document.getElementById('lista-toppings')
 const toppings = document.querySelectorAll('.topping')
 
-// Agregar botón de eliminar a cada topping existente
 toppings.forEach((topping) => {
   const botonEliminar = document.createElement('button')
   botonEliminar.textContent = 'Eliminar'
